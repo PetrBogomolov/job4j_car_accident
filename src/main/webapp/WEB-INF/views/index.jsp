@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>
@@ -13,16 +13,21 @@
 </head>
 <body>
 <table class="table">
-    <thead class="thead-inverse">
+    <thead>
     <tr>
-        <th>Data</th>
+        <th>id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Address</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${data}" var="data">
+    <c:forEach items="${intruders}" var="accident">
         <tr>
-            <th scope="row"><c:out value="${data}"/>
-            </th>
+            <th><c:out value="${accident.id}"/></th>
+            <th><c:out value="${accident.name}"/></th>
+            <th class="table-danger"><c:out value="${accident.text}"/></th>
+            <th><c:out value="${accident.address}"/></th>
         </tr>
     </c:forEach>
     </tbody>
