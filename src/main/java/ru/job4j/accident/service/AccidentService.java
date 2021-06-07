@@ -28,6 +28,6 @@ public class AccidentService {
     }
 
     public Collection<Accident> getAllValues() {
-        return store.getAccidents().values();
+        return store.getAccidents();
     }
 }

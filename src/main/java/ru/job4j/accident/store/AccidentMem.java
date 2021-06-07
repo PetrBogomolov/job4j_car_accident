@@ -2,6 +2,7 @@ package ru.job4j.accident.store;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,8 +12,8 @@ public class AccidentMem {
     private static final AtomicInteger ACCIDENT_ID = new AtomicInteger(1);
     private final Map<Integer, Accident> accidents = new HashMap<>();
 
-    public Map<Integer, Accident> getAccidents() {
-        return accidents;
+    public Collection<Accident> getAccidents() {
+        return accidents.values();
     }
 
     public void add(Accident accident) {
