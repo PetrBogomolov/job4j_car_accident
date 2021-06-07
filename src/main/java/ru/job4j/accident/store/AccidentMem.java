@@ -8,19 +8,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class AccidentMem {
-    private static final AtomicInteger ACCIDENT_ID = new AtomicInteger();
+    private static final AtomicInteger ACCIDENT_ID = new AtomicInteger(1);
     private final Map<Integer, Accident> accidents = new HashMap<>();
-
-    public AccidentMem() {
-        add(new Accident(1, "Petr Bogomolov", "speeding", "Krasnodar"));
-        add(new Accident(2, "Ivan Ivanov", "parking", "Moscow"));
-    }
 
     public Map<Integer, Accident> getAccidents() {
         return accidents;
     }
 
     public void add(Accident accident) {
-        accidents.putIfAbsent(ACCIDENT_ID.getAndIncrement(), accident);
+        int currentId = ACCIDENT_ID.getAndIncrement();
+        accident.setId(currentId);
+        accidents.putIfAbsent(currentId, accident);
+    }
+
+    public void update(Accident accident) {
+        accidents.replace(accident.getId(), accident);
     }
 }

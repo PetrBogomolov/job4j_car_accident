@@ -19,6 +19,10 @@ public class AccidentService {
         store.add(accident);
     }
 
+    public void updateAccident(Accident accident) {
+       store.update(accident);
+    }
+
     public Collection<Accident> getAllValues() {
         return store.getAccidents().values();
     }
