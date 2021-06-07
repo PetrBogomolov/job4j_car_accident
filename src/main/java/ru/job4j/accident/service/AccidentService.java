@@ -23,6 +23,10 @@ public class AccidentService {
        store.update(accident);
     }
 
+    public Accident getAccidentById(int id) {
+        return store.getById(id);
+    }
+
     public Collection<Accident> getAllValues() {
         return store.getAccidents().values();
     }

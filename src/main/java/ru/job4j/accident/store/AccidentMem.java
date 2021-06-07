@@ -24,4 +24,8 @@ public class AccidentMem {
     public void update(Accident accident) {
         accidents.replace(accident.getId(), accident);
     }
+
+    public Accident getById(int id) {
+        return accidents.get(id);
+    }
 }
