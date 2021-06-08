@@ -18,6 +18,7 @@
     <tr>
         <th>Номер</th>
         <th>Нарушитель</th>
+        <th>Категория нарушения</th>
         <th>Описание</th>
         <th>Адрес</th>
         <th>Действия</th>
@@ -29,7 +30,8 @@
         <tr>
             <th><c:out value="${accident.id}"/></th>
             <th><c:out value="${accident.name}"/></th>
-            <th class="table-danger"><c:out value="${accident.text}"/></th>
+            <th class="table-danger"><c:out value="${accident.type.name}"/></th>
+            <th><c:out value="${accident.text}"/></th>
             <th><c:out value="${accident.address}"/></th>
             <th> <a href="<c:url value='/update?id=${accident.id}'/>"><i class="bi bi-pencil-square"></i></a></th>
         </tr>
