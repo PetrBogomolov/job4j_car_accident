@@ -19,6 +19,16 @@
             </td>
         </tr>
         <tr>
+            <td>Статья КоАП РФ:</td>
+            <td>
+                <select name="rIds" multiple>
+                    <c:forEach var="rule" items="${rules}">
+                        <option value=<c:out value="${rule.id}"/>><c:out value="${rule.name}"/></option>
+                    </c:forEach>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td>Описание:</td>
             <td><input type='text' name='text'></td>
         </tr>
