@@ -40,6 +40,7 @@
             <th><c:out value="${accident.text}"/></th>
             <th><c:out value="${accident.address}"/></th>
             <th><a href="<c:url value='/update?id=${accident.id}'/>"><i class="bi bi-pencil-square"></i></a></th>
+            <th><a href="<c:url value='/delete?id=${accident.id}'/>"><i class="bi bi-trash-fill"></i></a></th>
         </tr>
     </c:forEach>
     </tbody>
