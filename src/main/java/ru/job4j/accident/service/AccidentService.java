@@ -4,28 +4,28 @@ import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.store.AccidentJdbcTemplate;
+import ru.job4j.accident.store.AccidentHibernate;
 import java.util.List;
 
 @Service
 public class AccidentService {
 
-    private final AccidentJdbcTemplate store;
+    private final AccidentHibernate store;
 
-    public AccidentService(AccidentJdbcTemplate store) {
+    public AccidentService(AccidentHibernate store) {
         this.store = store;
     }
 
     public void addAccident(Accident accident, String[] rIds) {
-        store.add(accident, rIds);
+        store.saveAccident(accident, rIds);
     }
 
     public void updateAccident(Accident accident, String[] rIds) {
-       store.update(accident, rIds);
+       store.updateAccident(accident, rIds);
     }
 
     public void deleteAccident(int id) {
-        store.delete(id);
+        store.deleteAccidentById(id);
     }
 
     public Accident getAccidentById(int id) {

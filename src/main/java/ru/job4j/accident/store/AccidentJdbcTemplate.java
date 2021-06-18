@@ -3,7 +3,6 @@ package ru.job4j.accident.store;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
@@ -12,7 +11,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Repository
 public class AccidentJdbcTemplate {
     private final JdbcTemplate jdbc;
 
@@ -92,8 +90,8 @@ public class AccidentJdbcTemplate {
                 (resultSet.getString("name")),
                 (resultSet.getString("text")),
                 (resultSet.getString("address")),
-                getTypeById(resultSet.getInt("type_id")),
-                rulesByCurrentAccident);
+                getTypeById(resultSet.getInt("type_id")));
+                accident.setRules(rulesByCurrentAccident);
         accident.setId(resultSet.getInt("id"));
         return accident;
     });
