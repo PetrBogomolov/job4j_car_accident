@@ -1,46 +1,72 @@
 package ru.job4j.accident.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.store.AccidentHibernate;
+import ru.job4j.accident.store.AccidentRepository;
+import ru.job4j.accident.store.AccidentTypeRepository;
+import ru.job4j.accident.store.RuleRepository;
+
 import java.util.List;
 
 @Service
 public class AccidentService {
 
-    private final AccidentHibernate store;
+    private final AccidentRepository accidentRepository;
+    private final RuleRepository ruleRepository;
+    private final AccidentTypeRepository typeRepository;
 
-    public AccidentService(AccidentHibernate store) {
-        this.store = store;
+    public AccidentService(AccidentRepository accidentRepository,
+                           RuleRepository ruleRepository,
+                           AccidentTypeRepository typeRepository) {
+        this.accidentRepository = accidentRepository;
+        this.ruleRepository = ruleRepository;
+        this.typeRepository = typeRepository;
     }
 
-    public void addAccident(Accident accident, String[] rIds) {
-        store.saveAccident(accident, rIds);
+    @Transactional
+    public Accident saveAccident(Accident accident, String[] rIds) {
+        for (String id : rIds) {
+            accident.addRule(ruleRepository.findById(Integer.parseInt(id)).get());
+        }
+        return accidentRepository.save(accident);
     }
 
+    @Transactional
     public void updateAccident(Accident accident, String[] rIds) {
-       store.updateAccident(accident, rIds);
+        Accident current = getAccidentById(accident.getId());
+        current.setName(accident.getName());
+        current.setText(accident.getText());
+        current.setAddress(accident.getAddress());
+        current.setType(accident.getType());
+        current.getRules().clear();
+        for (String id : rIds) {
+            current.addRule(ruleRepository.findById(Integer.parseInt(id)).get());
+        }
+        accidentRepository.save(current);
     }
 
+    @Transactional
     public void deleteAccident(int id) {
-        store.deleteAccidentById(id);
+        accidentRepository.delete(getAccidentById(id));
     }
 
+    @Transactional
     public Accident getAccidentById(int id) {
-        return store.getAccidentById(id);
+        return accidentRepository.findById(id).get();
     }
 
-    public List<Accident> getAllValues() {
-        return store.getAllAccidents();
+    public List<Accident> getAllAccidents() {
+        return accidentRepository.findAllAccidents();
     }
 
     public List<AccidentType> getAllTypes() {
-        return store.getAllTypes();
+        return (List<AccidentType>) typeRepository.findAll();
     }
 
     public List<Rule> getAllRules() {
-        return store.getAllRules();
+        return (List<Rule>) ruleRepository.findAll();
     }
 }
