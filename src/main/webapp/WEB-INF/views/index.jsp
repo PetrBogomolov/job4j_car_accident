@@ -25,7 +25,20 @@
         <th>Действия</th>
     </tr>
     </thead>
-    <a href="<c:url value='/create'/>">Добавить инцидент</a>
+    <ul class="nav float-left">
+        <li class="nav-item active">
+            <a href="<c:url value='/create'/>">Добавить инцидент</a>
+        </li>
+    </ul>
+    <ul class="nav float-right">
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <li class="nav-item active">
+                <a class="nav-link" href="<c:url value='/logout'/>">
+                    <c:out value="${pageContext.request.userPrincipal.name}"/> | Выход
+                </a>
+            </li>
+        </c:if>
+    </ul>
     <tbody>
     <c:forEach items="${intruders}" var="accident">
         <tr>
