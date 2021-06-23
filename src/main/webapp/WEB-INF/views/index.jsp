@@ -31,13 +31,11 @@
         </li>
     </ul>
     <ul class="nav float-right">
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
             <li class="nav-item active">
                 <a class="nav-link" href="<c:url value='/logout'/>">
-                    <c:out value="${pageContext.request.userPrincipal.name}"/> | Выход
+                    <c:out value="${user.username}"/> | Выход
                 </a>
             </li>
-        </c:if>
     </ul>
     <tbody>
     <c:forEach items="${intruders}" var="accident">
