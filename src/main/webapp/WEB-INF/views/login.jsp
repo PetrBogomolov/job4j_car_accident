@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html>
 <body>
+<a href="<c:url value='/reg'/>">Регистрация</a>
 <div class="card-header">
     <h4>Вход</h4>
 </div>
@@ -21,7 +22,7 @@
             <td><input type='password' name='password'/></td>
         </tr>
         <tr>
-            <td colspan='2'><input name="submit" type="submit" value="submit" /></td>
+            <td colspan='2'><input name="submit" type="submit" value="Войти" /></td>
         </tr>
     </table>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
