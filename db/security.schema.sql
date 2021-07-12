@@ -10,7 +10,7 @@ insert into users (enabled, username, password, role_id)
 values (true,
         'admin',
         '$2a$10$dCVBjGI1tJcyqbgm1EulfuGQ7p3.tjl1tfdAszKqWN4Epp7K7CVAe',
-        (select id from roles where name = 'ADMIN'));
+        (select id from roles where name = 'ROLE_ADMIN'));
 
 CREATE TABLE roles
 (

@@ -3,9 +3,9 @@ package ru.job4j.accident.store;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.AccidentType;
-import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.entity.Accident;
+import ru.job4j.accident.entity.AccidentType;
+import ru.job4j.accident.entity.Rule;
 
 import java.util.List;
 import java.util.function.Function;

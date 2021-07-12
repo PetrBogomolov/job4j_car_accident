@@ -1,10 +1,10 @@
-package ru.job4j.accident.control;
+package ru.job4j.accident.controller;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.accident.model.User;
+import ru.job4j.accident.entity.User;
 import ru.job4j.accident.service.RegAndAuthService;
 
 @Controller

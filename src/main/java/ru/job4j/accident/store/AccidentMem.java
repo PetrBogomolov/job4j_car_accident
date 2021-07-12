@@ -1,8 +1,8 @@
 package ru.job4j.accident.store;
 
-import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.AccidentType;
-import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.entity.Accident;
+import ru.job4j.accident.entity.AccidentType;
+import ru.job4j.accident.entity.Rule;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;

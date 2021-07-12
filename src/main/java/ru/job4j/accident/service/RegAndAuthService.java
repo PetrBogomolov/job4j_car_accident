@@ -3,7 +3,7 @@ package ru.job4j.accident.service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.job4j.accident.model.User;
+import ru.job4j.accident.entity.User;
 import ru.job4j.accident.store.RoleRepository;
 import ru.job4j.accident.store.UserRepository;
 
